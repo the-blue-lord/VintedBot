@@ -1,0 +1,42 @@
+{
+    "searches": [
+        {
+            "query": "search_text=garmin+forerunner+55&currency=EUR&price_from=30&price_to=100",
+            "white_list": ["garmin", "forerunner", "55"],
+            "black_list": ["45", "forerunner 45s"],
+            "channel": "1462247227534872578"
+        },
+        {
+            "query": "catalog[]=3035&brand_ids[]=161764",
+            "white_list": [],
+            "black_list": [],
+            "channel": "1462247227534872578"
+        }
+    ],
+
+    "testing": {
+        "active": false,
+        "results": [{
+            "id": "1",
+            "title": "test",
+            "price": {
+                "amount": 100
+            },
+            "url": "https://www.vinted.pl/male-kurtki-i-zimowe-kurtki/1"
+        },{
+            "id": "2",
+            "title": "test",
+            "price": {
+                "amount": 100
+            },
+            "url": "https://www.vinted.pl/male-kurtki-i-zimowe-kurtki/1"
+        },{
+            "id": "3",
+            "title": "test",
+            "price": {
+                "amount": 100
+            },
+            "url": "https://www.vinted.pl/male-kurtki-i-zimowe-kurtki/1"
+        }]
+    }
+}

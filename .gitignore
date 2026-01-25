@@ -1,0 +1,6 @@
+cache/
+logs/
+test_logs/
+testing/
+__pycache__/
+.env
