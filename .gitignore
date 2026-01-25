@@ -1,6 +1,6 @@
-cache/
-logs/
-test_logs/
+cache/*.json
+logs/*.log
+test_logs/*.log
 testing/
 __pycache__/
 .env
