@@ -1,6 +1,5 @@
 import console
 import json
-from textwrap import dedent
 
 from utils.embed_builder import buildEmbed
 from utils.vinted_db_scraper import asyncGetItem

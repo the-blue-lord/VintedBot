@@ -1,9 +1,5 @@
-import discord
-
 import console
 from utils.offers_processer import notify_offers
-
-from utils.embed_builder import buildEmbed
 
 async def main(client):
     console.log(f"Logged in as {client.user} (ID: {client.user.id})")
