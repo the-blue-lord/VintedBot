@@ -28,7 +28,7 @@ async def main(client, offers):
 
                 user_url=publisher.get("profile_url", None),
                 username=publisher.get("login", None),
-                user_image_url=(publisher.get("photo", {}) or {}).get("url", None),
+                user_image_url=(publisher.get("photo", {}) or {}).get("url", ""),
 
                 publication_time=publication_time,
                 size=offer.get("size", None),

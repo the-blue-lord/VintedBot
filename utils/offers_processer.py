@@ -97,20 +97,15 @@ async def executeSearch(search_data, new_offers_retrived, testing_active = False
 
     new_offers = []
 
-    whitelist = search_data.get("whitelist", [])
-    blacklist = search_data.get("blacklist", [])
+    whitelist = search_data.get("white_list", [])
+    blacklist = search_data.get("black_list", [])
 
     if cached_list:
-        key = list(scraped_data.keys())[0]
-        print([x for x in whitelist if str(x).lower() not in str(scraped_data[key]["title"]).lower()])
-        print([x for x in blacklist if str(x).lower() in str(scraped_data[key]["title"]).lower()])
-
         # check what current offers are not in cache
         new_offers = [scraped_data[key] for key in scraped_data
-            #if str(key) in cached_list 
             if int(key) > int(cached_min_id)
-            #and len([x for x in whitelist if str(x).lower() not in str(scraped_data[key]["title"]).lower()]) == 0
-            #and len([x for x in blacklist if str(x).lower() in str(scraped_data[key]["title"]).lower()]) == 0
+            and len([x for x in whitelist if str(x).lower() not in str(scraped_data[key]["title"]).lower()]) == 0
+            and len([x for x in blacklist if str(x).lower() in str(scraped_data[key]["title"]).lower()]) == 0
         ]
 
     console.log(f"New offers found: {len(new_offers)}", md5_hash)
