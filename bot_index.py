@@ -7,6 +7,10 @@ from utils.offers_processer import notify_offers
 
 load_dotenv()
 
+os.makedirs("cache", exist_ok=True)
+os.makedirs("logs", exist_ok=True)
+os.makedirs("test_logs", exist_ok=True)
+
 intents = discord.Intents.default()
 intents.message_content = True
 client = discord.Client(intents=intents)
