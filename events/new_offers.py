@@ -5,7 +5,7 @@ from utils.embed_builder import buildEmbed
 from utils.vinted_db_scraper import asyncGetItem
 
 async def main(client, offers):
-    console.log(f"New offers detected:\n" + json.dumps([[r['url'] for r in offers[key]] for key in offers], indent=4))
+    console.log("New offers detected:\n" + json.dumps([[r['url'] for r in offers[key]] for key in offers], indent=4))
 
     for key in offers:
         for offer in offers[key]:
