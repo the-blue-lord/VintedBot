@@ -40,7 +40,7 @@ def new_log(message, hash, log_level):
     time = datetime.now()
 
     variable = log_levels[log_level]["variable"]
-    log_line = f"[{time}] {variable} > {message.replace('\n', f'\n  \\------------------------] {variable} > ')}"
+    log_line = f"[{time}] {variable} > {message.replace('\n', '\n  \\------------------------] ' + str(variable) + ' > ')}"
 
     for level in log_levels:
         if hash == log_levels[level]["filename"] and level != log_level:
@@ -58,7 +58,7 @@ def new_log(message, hash, log_level):
 
 
     variable = log_levels[log_level]["variable"]
-    informative_log_line = f"[{time}] ({normalize(code_32)}) {variable} > {message.replace('\n', f'\n  \\------------------------] ({normalize(code_32)}) {variable} > ')}"
+    informative_log_line = f"[{time}] ({normalize(code_32)}) {variable} > {message.replace('\n', '\n  \\------------------------] ({normalize(code_32)}) ' + str(variable) + ' > ')}"
 
     with open(f"{dump_log_file}", "a") as log_file: log_file.write(informative_log_line + "\n")
 

@@ -31,7 +31,7 @@ async def check_new_offers(searches = None):
                 return
 
             all_new_offers.update(search_results)
-            console.log(f"New offers so far: {json.dumps(all_new_offers, indent=4)}\n", list(search_results.keys())[0])
+            console.log(f"New offers so far: {json.dumps(all_new_offers, indent=4)}" + "\n", list(search_results.keys())[0])
 
         except Exception as e:
             console.error(f"Error while checking offers: {e}")
@@ -51,7 +51,7 @@ async def executeSearch(search_data, new_offers_retrived, testing_active = False
         return {md5_hash: new_result_object}
     console.log(f"--- Checking search: {search} ------------------------------", md5_hash)
     filename = f"cache/{md5_hash}.json"
-    console.log(f"Search hash: {md5_hash}\n", md5_hash)
+    console.log(f"Search hash: {md5_hash}" + "\n", md5_hash)
 
     cached_list = []
 
@@ -62,7 +62,7 @@ async def executeSearch(search_data, new_offers_retrived, testing_active = False
 
         cached_list = [x for x in cached_data["items"]]
         console.log(f"Cached offers found: {len(cached_list)}", md5_hash)
-        console.log(f"Cache contents: {cached_list}\n", md5_hash)
+        console.log(f"Cache contents: {cached_list}" + "\n", md5_hash)
 
     except FileNotFoundError:
         cached_data = {}
@@ -93,7 +93,7 @@ async def executeSearch(search_data, new_offers_retrived, testing_active = False
     }
 
     console.log(f"Current offers found: {len(raw_data)}", md5_hash)
-    console.log(f"Current contents: {[element['id'] for element in raw_data]}\n", md5_hash)
+    console.log(f"Current contents: {[element['id'] for element in raw_data]}" + "\n", md5_hash)
 
     new_offers = []
 
@@ -121,6 +121,6 @@ async def executeSearch(search_data, new_offers_retrived, testing_active = False
             "items": scraped_data
         }, f, indent=4)
 
-    console.log(f"\nCache updated: {len(scraped_ids)} offers saved.\nCache contents: {scraped_ids}\n\n", md5_hash)
+    console.log(f"\nCache updated: {len(scraped_ids)} offers saved." + "\n" + f"Cache contents: {scraped_ids}" + "\n\n", md5_hash)
 
     return {md5_hash: new_offers}
