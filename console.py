@@ -39,7 +39,8 @@ def normalize(strng):
 def new_log(message, hash, log_level):
     time = datetime.now()
 
-    log_line = f"[{time}] {log_levels[log_level]["variable"]} > {message.replace("\n", f"\n  \\------------------------] {log_levels[log_level]["variable"]} > ")}"
+    variable = log_levels[log_level]["variable"]
+    log_line = f"[{time}] {variable} > {message.replace('\n', f'\n  \\------------------------] {variable} > ')}"
 
     for level in log_levels:
         if hash == log_levels[level]["filename"] and level != log_level:
@@ -56,7 +57,8 @@ def new_log(message, hash, log_level):
         # code_32 = log_levels[log_level]["hash_code"] # better to keep filename reference for better log management
 
 
-    informative_log_line = f"[{time}] ({normalize(code_32)}) {log_levels[log_level]["variable"]} > {message.replace("\n", f"\n  \\------------------------] ({normalize(code_32)}) {log_levels[log_level]["variable"]} > ")}"
+    variable = log_levels[log_level]["variable"]
+    informative_log_line = f"[{time}] ({normalize(code_32)}) {variable} > {message.replace('\n', f'\n  \\------------------------] ({normalize(code_32)}) {variable} > ')}"
 
     with open(f"{dump_log_file}", "a") as log_file: log_file.write(informative_log_line + "\n")
 

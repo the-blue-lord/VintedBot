@@ -5,7 +5,7 @@ from utils.embed_builder import buildEmbed
 from utils.vinted_db_scraper import asyncGetItem
 
 async def main(client, offers):
-    console.log(f"New offers detected:\n" + json.dumps([[r["url"] for r in offers[key]] for key in offers], indent=4))
+    console.log(f"New offers detected:\n" + json.dumps([[r['url'] for r in offers[key]] for key in offers], indent=4))
 
     for key in offers:
         for offer in offers[key]:
@@ -19,6 +19,10 @@ async def main(client, offers):
             image = element.get("photos", [{}])[0]
             image_link = image.get("url", "")
             publication_time = image.get("high_resolution", {}).get("timestamp", 0)
+
+            reviews_avg = f"{offer.get('rating', '-')}/5"
+            reviews_bool = f"{offer.get('rating', '-')}" != "None" 
+            reviews_num = f"({offer.get('reviews_number', '-')})"
 
             embed = buildEmbed(
                 country="IT",
@@ -34,7 +38,7 @@ async def main(client, offers):
                 size=offer.get("size", None),
                 brand=element.get("brand_title", None),
                 conditions=offer.get("conditions", None),
-                reviews=f"{f"{offer.get("rating", "-")}/5" if f"{offer.get("rating", "-")}" != "None" else ""} ({offer.get("reviews_number", "-")})",
+                reviews=f"{reviews_avg if reviews_bool else ''} {reviews_num}",
                 price=offer.get("price", None),
                 currency=offer.get("currency", None),
 

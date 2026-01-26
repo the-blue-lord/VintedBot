@@ -93,7 +93,7 @@ async def executeSearch(search_data, new_offers_retrived, testing_active = False
     }
 
     console.log(f"Current offers found: {len(raw_data)}", md5_hash)
-    console.log(f"Current contents: {[element["id"] for element in raw_data]}\n", md5_hash)
+    console.log(f"Current contents: {[element['id'] for element in raw_data]}\n", md5_hash)
 
     new_offers = []
 
