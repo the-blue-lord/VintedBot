@@ -145,6 +145,7 @@ async def asyncGetItem(item_id):
         rating = None
         aria_label = None
         reviews_number = None
+        country_id = None
 
         try: size = await page.text_content('[data-testid="item-attributes-size"] span.web_ui__Text__bold', timeout=3000)
         except: print("error with size")
@@ -156,6 +157,7 @@ async def asyncGetItem(item_id):
         except: print("error with aria label")
         try: reviews_number = await page.text_content('div.web_ui__Rating__label > span', timeout=3000) or "(0)"
         except: print("error with reviews number")
+        
         try:
             if aria_label:
                 match = re.search(r"valutazione di (\d(?:\.\d)?) su 5", aria_label)
@@ -173,7 +175,8 @@ async def asyncGetItem(item_id):
         "conditions": conditions if conditions else None,
         "description": description if description else None,
         "rating": rating if rating else None,
-        "reviews_number": reviews_number if reviews_number else None
+        "reviews_number": reviews_number if reviews_number else None,
+        "country": country_id if country_id else None
     })
 
     return data

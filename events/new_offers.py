@@ -25,7 +25,7 @@ async def main(client, offers):
             reviews_num = f"({offer.get('reviews_number', '-')})"
 
             embed = buildEmbed(
-                country="IT",
+                country= offer.get("country", None),
                 title=offer["title"],
                 link=offer["url"],
                 description=offer.get("description", None),
