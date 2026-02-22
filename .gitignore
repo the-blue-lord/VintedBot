@@ -4,3 +4,4 @@ test_logs/*.log
 testing/
 __pycache__/
 .env
+venv
